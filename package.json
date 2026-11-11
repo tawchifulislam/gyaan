@@ -1,0 +1,30 @@
+{
+  "name": "gyaan",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Cross-article research assistant for a Bengali knowledge blog (retrieval-augmented generation with a measured evaluation).",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "export": "tsx scripts/export-corpus.ts",
+    "chunks": "tsx scripts/build-chunks.ts",
+    "validate": "tsx scripts/validate-eval.ts",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "dotenv": "^18.0.10"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}

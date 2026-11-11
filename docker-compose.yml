@@ -1,0 +1,16 @@
+# Local Postgres with the pgvector extension (used from step 3 on).
+# Production uses Neon; this keeps development and CI independent of the network.
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: gyaan
+      POSTGRES_PASSWORD: gyaan
+      POSTGRES_DB: gyaan
+    ports:
+      - '5433:5432' # 5433 so it does not clash with a local Postgres on 5432
+    volumes:
+      - gyaan-db:/var/lib/postgresql/data
+
+volumes:
+  gyaan-db:
