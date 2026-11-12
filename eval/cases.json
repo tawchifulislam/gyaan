@@ -1,4 +1,230 @@
 {
   "version": 1,
-  "cases": []
+  "cases": [
+    {
+      "id": "q01",
+      "question": "তারিক যখন স্পেন অভিযানে নামেন, তখন দামেশকের খলিফা কে ছিলেন?",
+      "language": "bn",
+      "category": "direct",
+      "answerable": true,
+      "expectedArticles": ["1788452348310"],
+      "notes": "উত্তর: খলিফা আল-ওয়ালিদ বিন আব্দুল মালিক (তারিক পোস্টের প্রথম অনুচ্ছেদ)"
+    },
+    {
+      "id": "q02",
+      "question": "একাত্তরে খুলনার সীমান্তঘেঁষা এক বাজারের হত্যাযজ্ঞ নিয়ে কোন সাক্ষী কথা বলেছেন?",
+      "language": "bn",
+      "category": "direct",
+      "answerable": true,
+      "expectedArticles": ["1788451574530"],
+      "notes": "উত্তর: তিনজন প্রত্যক্ষদর্শীর বক্তব্য আছে: সিরাজুল ইসলাম, নিমাই চন্দ্র রায়, এবিএম শফিকুল ইসলাম"
+    },
+    {
+      "id": "q03",
+      "question": "বিটকয়েন কী?",
+      "language": "bn",
+      "category": "out-of-scope",
+      "answerable": false,
+      "expectedArticles": [],
+      "notes": "ব্লগে নেই। সহজ নমুনা: একেবারে অন্য বিষয়"
+    },
+    {
+      "id": "q04",
+      "question": "ফেলানীকে গুলি করার অভিযোগে অভিযুক্ত বিএসএফ সদস্য প্রথমবার আদালতে কবে ছাড়া পান?",
+      "language": "bn",
+      "category": "direct",
+      "answerable": true,
+      "expectedArticles": ["1788451251437"],
+      "notes": "উত্তর: ২০১৩ সালের ৬ সেপ্টেম্বর, বিএসএফ-এর বিশেষ আদালতে খালাস (প্রথম অনুচ্ছেদের মাঝামাঝি)"
+    },
+    {
+      "id": "q05",
+      "question": "শবে বরাতের রাতে আলোর সাজ, আতশবাজি আর হালুয়া-রুটি নিয়ে লেখকের মত কী?",
+      "language": "bn",
+      "category": "direct",
+      "answerable": true,
+      "expectedArticles": ["1788451822776"],
+      "notes": "উত্তর: এগুলোর কোনো ভিত্তি ইসলামে নেই, বর্জনীয় (প্রায় শেষের দিকে)"
+    },
+    {
+      "id": "q06",
+      "question": "আল-আন্দালুস নামটা কোথা থেকে এসেছে বলে মনে করা হয়?",
+      "language": "bn",
+      "category": "direct",
+      "answerable": true,
+      "expectedArticles": ["1788452142459"],
+      "notes": "উত্তর: সবচেয়ে প্রচলিত ধারণা, ভ্যান্ডাল গোত্রের নাম থেকে, তবে পূর্ণ ঐকমত্য নেই (দ্বিতীয় অনুচ্ছেদ)"
+    },
+    {
+      "id": "q07",
+      "question": "বঙ্গভঙ্গের পর গঠিত নতুন প্রদেশে প্রথম লেফটেন্যান্ট গভর্নর হিসেবে কে বসেন?",
+      "language": "bn",
+      "category": "direct",
+      "answerable": true,
+      "expectedArticles": ["1788452818610"],
+      "notes": "উত্তর: স্যার ব্যামফিল্ড ফুলার (দ্বিতীয় অনুচ্ছেদ)"
+    },
+    {
+      "id": "q08",
+      "question": "How many Bangladeshis did the Indian border force kill in 2023, according to the blog?",
+      "language": "en",
+      "category": "cross-lingual",
+      "answerable": true,
+      "expectedArticles": ["1788451251437"],
+      "notes": "উত্তর: ৩১ জন (প্রথম অনুচ্ছেদের শেষের দিকে পরিসংখ্যান)"
+    },
+    {
+      "id": "q09",
+      "question": "Why did thousands of people gather at Chuknagar in May 1971?",
+      "language": "en",
+      "category": "cross-lingual",
+      "answerable": true,
+      "expectedArticles": ["1788451574530"],
+      "notes": "উত্তর: শরণার্থী হয়ে ভারতে যাওয়ার জন্য সীমান্ত পার হতে জড়ো হয়েছিলেন"
+    },
+    {
+      "id": "q10",
+      "question": "What does the word Shab-e-Barat mean?",
+      "language": "en",
+      "category": "cross-lingual",
+      "answerable": true,
+      "expectedArticles": ["1788451822776"],
+      "notes": "উত্তর: ফারসি শব্দ, শব = রাত, বরাত = মুক্তি বা ভাগ্য"
+    },
+    {
+      "id": "q11",
+      "question": "Why did Tariq ibn Ziyad burn his ships?",
+      "language": "en",
+      "category": "cross-lingual",
+      "answerable": true,
+      "expectedArticles": ["1788452348310"],
+      "notes": "উত্তর: সৈন্যরা শত্রুর বিশাল বাহিনী দেখে ভীত ছিল, ফেরার পথ বন্ধ করে দিতে"
+    },
+    {
+      "id": "q12",
+      "question": "Granada এর পতন কবে হয়েছিল?",
+      "language": "mixed",
+      "category": "mixed",
+      "answerable": true,
+      "expectedArticles": ["1788452142459"],
+      "notes": "উত্তর: ১৪৯২ খ্রিস্টাব্দে (প্রথম অনুচ্ছেদ)"
+    },
+    {
+      "id": "q13",
+      "question": "Cordoba শহর জ্ঞানচর্চায় এত গুরুত্বপূর্ণ ছিল কেন?",
+      "language": "mixed",
+      "category": "mixed",
+      "answerable": true,
+      "expectedArticles": ["1788452142459"],
+      "notes": "উত্তর: দশম শতকে বিশাল গ্রন্থাগার, গ্রিক-রোমান-ভারতীয়-পারস্য জ্ঞান সংরক্ষণ ও অনুবাদ (চতুর্থ অনুচ্ছেদ)"
+    },
+    {
+      "id": "q14",
+      "question": "Border killing গুলো নিয়ে India কী প্রতিশ্রুতি দিয়েছিল?",
+      "language": "mixed",
+      "category": "mixed",
+      "answerable": true,
+      "expectedArticles": ["1788451251437"],
+      "notes": "উত্তর: ২০২০ সালের ১৯ সেপ্টেম্বর সীমান্তে মৃত্যু শূন্যে নামিয়ে আনার কথা (প্রথম অনুচ্ছেদের শেষ বাক্য)"
+    },
+    {
+      "id": "q15",
+      "question": "স্পেনে মুসলিম শাসন কে শুরু করেছিলেন, আর তা কতদিন টিকেছিল?",
+      "language": "bn",
+      "category": "multi-article",
+      "answerable": true,
+      "expectedArticles": ["1788452348310", "1788452142459"],
+      "notes": "উত্তর: তারিক বিন জিয়াদ (তারিক পোস্ট), প্রায় ৭৮১ বছর (আল-আন্দালুস পোস্ট)"
+    },
+    {
+      "id": "q16",
+      "question": "গথ রাজা রডারিক কীভাবে পরাজিত হলেন, আর মুসলিম শাসিত স্পেনের শেষটা কীভাবে হয়েছিল?",
+      "language": "bn",
+      "category": "multi-article",
+      "answerable": true,
+      "expectedArticles": ["1788452348310", "1788452142459"],
+      "notes": "উত্তর: ওয়াদি লাক্কার যুদ্ধে (তারিক পোস্ট); ১৪৯২-এ গ্রানাডার পতনে (আল-আন্দালুস পোস্ট)"
+    },
+    {
+      "id": "q17",
+      "question": "ভারতীয় সীমান্তের কাছে সাধারণ মানুষ নিহত হওয়ার কোন কোন ঘটনা ব্লগে আছে?",
+      "language": "bn",
+      "category": "multi-article",
+      "answerable": true,
+      "expectedArticles": ["1788451251437", "1788451574530"],
+      "notes": "উত্তর: ফেলানী খাতুনের হত্যা (২০১১) এবং চুকনগর গণহত্যা (১৯৭১)"
+    },
+    {
+      "id": "q18",
+      "question": "1905 সালে বঙ্গভঙ্গের ঘোষণা কবে দেওয়া হয়েছিল?",
+      "language": "bn",
+      "category": "digits",
+      "answerable": true,
+      "expectedArticles": ["1788452818610"],
+      "notes": "উত্তর: ১৯০৫ সালের ১৯ জুলাই; পোস্টে বাংলা অঙ্ক, প্রশ্নে ইংরেজি অঙ্ক"
+    },
+    {
+      "id": "q19",
+      "question": "ইউরোপে মুসলিম শাসন 781 বছর স্থায়ী হয়েছিল বলা হয়, এটা কবে শুরু আর কবে শেষ?",
+      "language": "bn",
+      "category": "digits",
+      "answerable": true,
+      "expectedArticles": ["1788452142459"],
+      "notes": "উত্তর: ৭১১ খ্রিস্টাব্দে শুরু, ১৪৯২-এ শেষ; পোস্টে শিরোনামেই ৭৮১ (বাংলা অঙ্ক)"
+    },
+    {
+      "id": "q20",
+      "question": "চুকনগরে নিহতের সংখ্যা 10 থেকে 12 হাজার, এই হিসাব কাদের?",
+      "language": "bn",
+      "category": "digits",
+      "answerable": true,
+      "expectedArticles": ["1788451574530"],
+      "notes": "উত্তর: যারা লাশ নদীতে ফেলেছিলেন তাদের অনুমান (এবিএম শফিকুল ইসলামের বক্তব্যের শেষ অংশ); পোস্টে ১০ থেকে ১২ বাংলা অঙ্কে"
+    },
+    {
+      "id": "q21",
+      "question": "তারিক 12000 সৈন্য নিয়ে কোথা থেকে যাত্রা করেন?",
+      "language": "bn",
+      "category": "digits",
+      "answerable": true,
+      "expectedArticles": ["1788452348310"],
+      "notes": "উত্তর: মরক্কো থেকে; পোস্টে \"১২ হাজার\" লেখা, প্রশ্নে 12000"
+    },
+    {
+      "id": "q22",
+      "question": "বঙ্গভঙ্গের সময় মুসলমানদের শিক্ষা পরিস্থিতি কেমন ছিল?",
+      "language": "bn",
+      "category": "out-of-scope",
+      "answerable": false,
+      "expectedArticles": [],
+      "notes": "কঠিন: পোস্টের শিরোনামে \"শিক্ষা\" আছে, কিন্তু লেখায় শিক্ষা-পরিস্থিতির কোনো আলোচনা নেই"
+    },
+    {
+      "id": "q23",
+      "question": "শবে মেরাজের রাতে কী কী আমল করা উচিত?",
+      "language": "bn",
+      "category": "out-of-scope",
+      "answerable": false,
+      "expectedArticles": [],
+      "notes": "কঠিন: শবে বরাতের কাছাকাছি, কিন্তু শবে মেরাজ কোনো পোস্টে নেই"
+    },
+    {
+      "id": "q24",
+      "question": "ওসমানীয় সাম্রাজ্যের পতন কবে হয়েছিল?",
+      "language": "bn",
+      "category": "out-of-scope",
+      "answerable": false,
+      "expectedArticles": [],
+      "notes": "কঠিন: মুসলিম ইতিহাসের কাছাকাছি, কিন্তু ওসমানীয় সাম্রাজ্য কোনো পোস্টে নেই"
+    },
+    {
+      "id": "q25",
+      "question": "১৯৭১ সালের ২৫ মার্চ রাতে ঢাকায় কী ঘটেছিল?",
+      "language": "bn",
+      "category": "out-of-scope",
+      "answerable": false,
+      "expectedArticles": [],
+      "notes": "কঠিন: ১৯৭১-এর কাছাকাছি, কিন্তু চুকনগর পোস্টে ২৫ মার্চ বা ঢাকার ঘটনা নেই"
+    }
+  ]
 }
