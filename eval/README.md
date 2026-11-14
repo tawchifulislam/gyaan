@@ -1,6 +1,6 @@
 # Gyaan evaluation set
 
-Hand-written questions with the article (and optionally section) that should answer them.
+Questions with the article (and optionally section) that should answer them.
 Retrieval quality is measured against this set whenever the chunking, the embedding model
 or the retrieval settings change. The questions are written **before** looking at any
 retrieval results.

@@ -9,7 +9,7 @@ with citations that link to the exact article sections it came from.
 ## Why this is not another "chat with your docs" demo
 
 * **Bengali is a low-resource language for embedding models.** The embedding model is chosen by
-  measuring recall on a hand-written evaluation set of real questions, not from a leaderboard.
+  measuring recall on a evaluation set of realistic questions, not from a leaderboard.
 * **The evaluation set lives in the repo** (`eval/`) and runs in CI, so a change to chunking or
   the model cannot silently make retrieval worse.
 * **It runs entirely on free tiers**, with a retrieval-only fallback when the answer-generation
@@ -18,8 +18,8 @@ with citations that link to the exact article sections it came from.
 ## Plan
 
 - [x] Project scaffold, section-aware chunker, corpus export from the blog's public API, eval tooling
-- [ ] Evaluation set (25+ hand-written questions)
-- [ ] Embedding benchmark: recall@k and MRR per model, decision recorded
+- [x] Evaluation set (27 reviewed questions)
+- [x] Embedding benchmark and decision: [ADR 001](docs/decisions/001-embedding-model.md)
 - [ ] Ingestion service (PostgreSQL + pgvector), signed idempotent webhook from the blog
 - [ ] `/ask` endpoint with streaming answers, citations, caching and a daily budget
 - [ ] Admin tools: duplicate topic-request check, coverage report
