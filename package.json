@@ -15,7 +15,8 @@
     "chunks": "tsx scripts/build-chunks.ts",
     "validate": "tsx scripts/validate-eval.ts",
     "db:up": "docker compose up -d",
-    "db:down": "docker compose down"
+    "db:down": "docker compose down",
+    "bench": "tsx scripts/benchmark.ts"
   },
   "dependencies": {
     "cheerio": "^1.2.0",
