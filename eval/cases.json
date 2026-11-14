@@ -7,7 +7,9 @@
       "language": "bn",
       "category": "direct",
       "answerable": true,
-      "expectedArticles": ["1788452348310"],
+      "expectedArticles": [
+        "1788452348310"
+      ],
       "notes": "উত্তর: খলিফা আল-ওয়ালিদ বিন আব্দুল মালিক (তারিক পোস্টের প্রথম অনুচ্ছেদ)"
     },
     {
@@ -16,7 +18,9 @@
       "language": "bn",
       "category": "direct",
       "answerable": true,
-      "expectedArticles": ["1788451574530"],
+      "expectedArticles": [
+        "1788451574530"
+      ],
       "notes": "উত্তর: তিনজন প্রত্যক্ষদর্শীর বক্তব্য আছে: সিরাজুল ইসলাম, নিমাই চন্দ্র রায়, এবিএম শফিকুল ইসলাম"
     },
     {
@@ -34,7 +38,9 @@
       "language": "bn",
       "category": "direct",
       "answerable": true,
-      "expectedArticles": ["1788451251437"],
+      "expectedArticles": [
+        "1788451251437"
+      ],
       "notes": "উত্তর: ২০১৩ সালের ৬ সেপ্টেম্বর, বিএসএফ-এর বিশেষ আদালতে খালাস (প্রথম অনুচ্ছেদের মাঝামাঝি)"
     },
     {
@@ -43,7 +49,9 @@
       "language": "bn",
       "category": "direct",
       "answerable": true,
-      "expectedArticles": ["1788451822776"],
+      "expectedArticles": [
+        "1788451822776"
+      ],
       "notes": "উত্তর: এগুলোর কোনো ভিত্তি ইসলামে নেই, বর্জনীয় (প্রায় শেষের দিকে)"
     },
     {
@@ -52,7 +60,9 @@
       "language": "bn",
       "category": "direct",
       "answerable": true,
-      "expectedArticles": ["1788452142459"],
+      "expectedArticles": [
+        "1788452142459"
+      ],
       "notes": "উত্তর: সবচেয়ে প্রচলিত ধারণা, ভ্যান্ডাল গোত্রের নাম থেকে, তবে পূর্ণ ঐকমত্য নেই (দ্বিতীয় অনুচ্ছেদ)"
     },
     {
@@ -61,7 +71,9 @@
       "language": "bn",
       "category": "direct",
       "answerable": true,
-      "expectedArticles": ["1788452818610"],
+      "expectedArticles": [
+        "1788452818610"
+      ],
       "notes": "উত্তর: স্যার ব্যামফিল্ড ফুলার (দ্বিতীয় অনুচ্ছেদ)"
     },
     {
@@ -70,7 +82,9 @@
       "language": "en",
       "category": "cross-lingual",
       "answerable": true,
-      "expectedArticles": ["1788451251437"],
+      "expectedArticles": [
+        "1788451251437"
+      ],
       "notes": "উত্তর: ৩১ জন (প্রথম অনুচ্ছেদের শেষের দিকে পরিসংখ্যান)"
     },
     {
@@ -79,7 +93,9 @@
       "language": "en",
       "category": "cross-lingual",
       "answerable": true,
-      "expectedArticles": ["1788451574530"],
+      "expectedArticles": [
+        "1788451574530"
+      ],
       "notes": "উত্তর: শরণার্থী হয়ে ভারতে যাওয়ার জন্য সীমান্ত পার হতে জড়ো হয়েছিলেন"
     },
     {
@@ -88,7 +104,9 @@
       "language": "en",
       "category": "cross-lingual",
       "answerable": true,
-      "expectedArticles": ["1788451822776"],
+      "expectedArticles": [
+        "1788451822776"
+      ],
       "notes": "উত্তর: ফারসি শব্দ, শব = রাত, বরাত = মুক্তি বা ভাগ্য"
     },
     {
@@ -97,7 +115,9 @@
       "language": "en",
       "category": "cross-lingual",
       "answerable": true,
-      "expectedArticles": ["1788452348310"],
+      "expectedArticles": [
+        "1788452348310"
+      ],
       "notes": "উত্তর: সৈন্যরা শত্রুর বিশাল বাহিনী দেখে ভীত ছিল, ফেরার পথ বন্ধ করে দিতে"
     },
     {
@@ -106,7 +126,9 @@
       "language": "mixed",
       "category": "mixed",
       "answerable": true,
-      "expectedArticles": ["1788452142459"],
+      "expectedArticles": [
+        "1788452142459"
+      ],
       "notes": "উত্তর: ১৪৯২ খ্রিস্টাব্দে (প্রথম অনুচ্ছেদ)"
     },
     {
@@ -115,7 +137,9 @@
       "language": "mixed",
       "category": "mixed",
       "answerable": true,
-      "expectedArticles": ["1788452142459"],
+      "expectedArticles": [
+        "1788452142459"
+      ],
       "notes": "উত্তর: দশম শতকে বিশাল গ্রন্থাগার, গ্রিক-রোমান-ভারতীয়-পারস্য জ্ঞান সংরক্ষণ ও অনুবাদ (চতুর্থ অনুচ্ছেদ)"
     },
     {
@@ -124,7 +148,9 @@
       "language": "mixed",
       "category": "mixed",
       "answerable": true,
-      "expectedArticles": ["1788451251437"],
+      "expectedArticles": [
+        "1788451251437"
+      ],
       "notes": "উত্তর: ২০২০ সালের ১৯ সেপ্টেম্বর সীমান্তে মৃত্যু শূন্যে নামিয়ে আনার কথা (প্রথম অনুচ্ছেদের শেষ বাক্য)"
     },
     {
@@ -133,7 +159,10 @@
       "language": "bn",
       "category": "multi-article",
       "answerable": true,
-      "expectedArticles": ["1788452348310", "1788452142459"],
+      "expectedArticles": [
+        "1788452348310",
+        "1788452142459"
+      ],
       "notes": "উত্তর: তারিক বিন জিয়াদ (তারিক পোস্ট), প্রায় ৭৮১ বছর (আল-আন্দালুস পোস্ট)"
     },
     {
@@ -142,7 +171,10 @@
       "language": "bn",
       "category": "multi-article",
       "answerable": true,
-      "expectedArticles": ["1788452348310", "1788452142459"],
+      "expectedArticles": [
+        "1788452348310",
+        "1788452142459"
+      ],
       "notes": "উত্তর: ওয়াদি লাক্কার যুদ্ধে (তারিক পোস্ট); ১৪৯২-এ গ্রানাডার পতনে (আল-আন্দালুস পোস্ট)"
     },
     {
@@ -151,7 +183,10 @@
       "language": "bn",
       "category": "multi-article",
       "answerable": true,
-      "expectedArticles": ["1788451251437", "1788451574530"],
+      "expectedArticles": [
+        "1788451251437",
+        "1788451574530"
+      ],
       "notes": "উত্তর: ফেলানী খাতুনের হত্যা (২০১১) এবং চুকনগর গণহত্যা (১৯৭১)"
     },
     {
@@ -160,7 +195,9 @@
       "language": "bn",
       "category": "digits",
       "answerable": true,
-      "expectedArticles": ["1788452818610"],
+      "expectedArticles": [
+        "1788452818610"
+      ],
       "notes": "উত্তর: ১৯০৫ সালের ১৯ জুলাই; পোস্টে বাংলা অঙ্ক, প্রশ্নে ইংরেজি অঙ্ক"
     },
     {
@@ -169,7 +206,9 @@
       "language": "bn",
       "category": "digits",
       "answerable": true,
-      "expectedArticles": ["1788452142459"],
+      "expectedArticles": [
+        "1788452142459"
+      ],
       "notes": "উত্তর: ৭১১ খ্রিস্টাব্দে শুরু, ১৪৯২-এ শেষ; পোস্টে শিরোনামেই ৭৮১ (বাংলা অঙ্ক)"
     },
     {
@@ -178,7 +217,9 @@
       "language": "bn",
       "category": "digits",
       "answerable": true,
-      "expectedArticles": ["1788451574530"],
+      "expectedArticles": [
+        "1788451574530"
+      ],
       "notes": "উত্তর: যারা লাশ নদীতে ফেলেছিলেন তাদের অনুমান (এবিএম শফিকুল ইসলামের বক্তব্যের শেষ অংশ); পোস্টে ১০ থেকে ১২ বাংলা অঙ্কে"
     },
     {
@@ -187,17 +228,21 @@
       "language": "bn",
       "category": "digits",
       "answerable": true,
-      "expectedArticles": ["1788452348310"],
+      "expectedArticles": [
+        "1788452348310"
+      ],
       "notes": "উত্তর: মরক্কো থেকে; পোস্টে \"১২ হাজার\" লেখা, প্রশ্নে 12000"
     },
     {
       "id": "q22",
-      "question": "বঙ্গভঙ্গের সময় মুসলমানদের শিক্ষা পরিস্থিতি কেমন ছিল?",
+      "question": "বঙ্গভঙ্গ রদ হওয়ার পর মুসলমানরা কী শিক্ষা নিয়েছিল?",
       "language": "bn",
-      "category": "out-of-scope",
-      "answerable": false,
-      "expectedArticles": [],
-      "notes": "কঠিন: পোস্টের শিরোনামে \"শিক্ষা\" আছে, কিন্তু লেখায় শিক্ষা-পরিস্থিতির কোনো আলোচনা নেই"
+      "category": "direct",
+      "answerable": true,
+      "expectedArticles": [
+        "1788452818610"
+      ],
+      "notes": "উত্তর: ব্রিটিশ বা হিন্দুদের ওপর ভরসা করা যাবে না, আপস নয় সংগ্রামের পথ (শেষ দিকের অনুচ্ছেদ). এখানে \"শিক্ষা\" মানে lesson, পোস্টের শিরোনামও সেই অর্থে"
     },
     {
       "id": "q23",
@@ -225,6 +270,24 @@
       "answerable": false,
       "expectedArticles": [],
       "notes": "কঠিন: ১৯৭১-এর কাছাকাছি, কিন্তু চুকনগর পোস্টে ২৫ মার্চ বা ঢাকার ঘটনা নেই"
+    },
+    {
+      "id": "q26",
+      "question": "ঢাকা বিশ্ববিদ্যালয় কবে প্রতিষ্ঠিত হয়েছিল?",
+      "language": "bn",
+      "category": "out-of-scope",
+      "answerable": false,
+      "expectedArticles": [],
+      "notes": "কঠিন: বঙ্গভঙ্গের পরের ঘটনার কাছাকাছি, কিন্তু কোনো পোস্টে বিশ্ববিদ্যালয়ের উল্লেখ নেই"
+    },
+    {
+      "id": "q27",
+      "question": "বঙ্গভঙ্গের সময় পূর্ব বাংলায় মুসলমানদের স্কুল-কলেজের অবস্থা কেমন ছিল?",
+      "language": "bn",
+      "category": "out-of-scope",
+      "answerable": false,
+      "expectedArticles": [],
+      "notes": "কঠিন: বঙ্গভঙ্গ পোস্টে স্কুল, কলেজ বা পড়াশোনা নিয়ে কিছু নেই (শিক্ষা শব্দটি এখানে lesson অর্থে)"
     }
   ]
 }

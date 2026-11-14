@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { chunkArticle } from '../core/chunker.js';
 import type { Article, EvalCase } from '../core/types.js';
 import type { EmbeddingProvider } from '../providers/types.js';
-import { prepareQuery, runBenchmark } from './benchmark.js';
+import { fingerprintInputs, prepareQuery, runBenchmark } from './benchmark.js';
 import { buildReport } from './report.js';
 
 const words = (n: number, p: string): string => Array.from({ length: n }, (_, i) => `${p}${i}`).join(' ');
@@ -44,9 +44,26 @@ describe('runBenchmark', () => {
     expect(r.summary.recall['1']).toBeCloseTo((1 + 1 + 0.5) / 3);
     expect(r.summary.recall['3']).toBe(1);
     expect(r.summary.mrr).toBe(1);
+    expect(r.summary.rPrecision).toBe(1); // the two-article question has both articles in its top 2
+    expect(r.cases.find(c => c.id === 'c')?.rPrecision).toBe(1);
+    expect(r.cases.find(c => c.id === 'c')?.recall['1']).toBe(0.5); // recall@1 caps at 50% there
+    expect(r.cases.find(c => c.id === 'a')?.margin).toBeGreaterThan(0);
+    expect(r.summary.margin?.min).toBeGreaterThan(0);
     expect(r.summary.byCategory.direct).toMatchObject({ n: 2, recall1: 1 });
     expect(r.summary.separation?.auc).toBe(1);
     expect(r.cases.find(c => c.id === 'a')?.top[0]?.slug).toBe('cats');
+  });
+
+  it('fingerprints the questions and chunk texts, so mismatched runs can be spotted', () => {
+    const chunks = articles.flatMap(a => chunkArticle(a));
+    const a = fingerprintInputs(chunks, cases);
+    expect(a).toMatch(/^[0-9a-f]{8}$/);
+    expect(fingerprintInputs(chunks, cases)).toBe(a);
+    const changed = cases.map(c => (c.id === 'a' ? { ...c, question: 'something else' } : c));
+    expect(fingerprintInputs(chunks, changed)).not.toBe(a);
+    // the digit mode changes embedText but not the fingerprint
+    const ascii = articles.flatMap(x => chunkArticle(x, { digits: 'ascii' }));
+    expect(fingerprintInputs(ascii, cases)).toBe(a);
   });
 
   it('prepares queries the same way as documents (digits option)', () => {
@@ -64,8 +81,21 @@ describe('buildReport', () => {
     expect(md).toContain('# Embedding benchmark');
     expect(md.indexOf('fake:topic')).toBeLessThan(md.indexOf('fake:other')); // best MRR first
     expect(md).toContain('recall@1');
+    expect(md).toContain('R-precision');
+    expect(md).toContain('margin');
     expect(md).toContain('AUC');
   });
+  it('warns when results come from different inputs', async () => {
+    const chunks = articles.flatMap(a => chunkArticle(a));
+    const r1 = await runBenchmark({ provider: fake, chunks, cases, digits: 'keep' });
+    const same = buildReport([r1, { ...r1, model: 'fake:two' }]);
+    expect(same).not.toContain('**Warning:**');
+    const mixed = buildReport([r1, { ...r1, model: 'fake:old', inputsHash: 'deadbeef' }]);
+    expect(mixed).toContain('**Warning:**');
+    const { inputsHash: _omit, ...legacy } = r1;
+    expect(buildReport([r1, { ...legacy, model: 'fake:legacy' }])).toContain('**Warning:**');
+  });
+
   it('handles no results', () => {
     expect(buildReport([])).toContain('No results yet');
   });
