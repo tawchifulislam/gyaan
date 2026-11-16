@@ -26,12 +26,15 @@ export const createProvider = (
   spec: string,
   env: Env,
   log: (message: string) => void = () => undefined,
+  options: { cache?: boolean } = {},
 ): EmbeddingProvider => {
   const [provider, ...rest] = spec.split(':');
   const model = rest.join(':');
   if (!provider || !model) throw new Error(`Bad model spec "${spec}". Use provider:model, e.g. voyage:voyage-4`);
 
-  const cache = new EmbeddingCache(`.cache/embeddings/${provider}__${model}.json`);
+  // The benchmark caches embeddings on disk. The ingest and ask paths pass cache: false:
+  // the database is their store, and serverless hosts have no writable disk.
+  const cache = new EmbeddingCache(options.cache === false ? null : `.cache/embeddings/${provider}__${model}.json`);
 
   if (provider === 'voyage') {
     if (!env.VOYAGE_API_KEY) throw new Error('VOYAGE_API_KEY is missing');

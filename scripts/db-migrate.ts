@@ -6,6 +6,7 @@ import 'dotenv/config';
 import path from 'node:path';
 import { connect, describeTarget, LOCAL_DATABASE_URL } from '../src/db/connect.js';
 import { migrate } from '../src/db/migrate.js';
+import { explain } from '../src/util/errors.js';
 
 const local = process.argv.includes('--local');
 const url = local ? LOCAL_DATABASE_URL : process.env.DATABASE_URL;
@@ -26,6 +27,6 @@ try {
     await close();
   }
 } catch (err) {
-  console.error('Migration failed:', err instanceof Error ? err.message : err);
+  console.error('Migration failed:', explain(err, { local }));
   process.exit(1);
 }

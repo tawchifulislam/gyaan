@@ -6,6 +6,7 @@
 // The blog server runs on a free host that sleeps when idle, so the first request can
 // take a minute. Requests therefore retry with backoff and use a long timeout.
 import type { Article } from '../core/types.js';
+import { errorMessage } from '../util/errors.js';
 
 export interface TfkClientOptions {
   baseUrl: string;
@@ -62,7 +63,7 @@ const fetchJson = async <T>(url: string, o: Required<Omit<TfkClientOptions, 'bas
     }
     if (attempt < o.retries) {
       const wait = 2000 * 2 ** attempt;
-      o.log(`  ...server not ready (${String(lastError)}), retrying in ${wait / 1000}s`);
+      o.log(`  ...server not ready (${errorMessage(lastError)}), retrying in ${wait / 1000}s`);
       await o.sleep(wait);
     }
   }

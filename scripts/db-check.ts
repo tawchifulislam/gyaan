@@ -4,6 +4,7 @@
 //   npm run db:check:local    the Docker database from docker-compose.yml
 import 'dotenv/config';
 import { connect, describeTarget, LOCAL_DATABASE_URL } from '../src/db/connect.js';
+import { explain } from '../src/util/errors.js';
 
 const local = process.argv.includes('--local');
 const url = local ? LOCAL_DATABASE_URL : process.env.DATABASE_URL;
@@ -47,6 +48,6 @@ try {
     await close();
   }
 } catch (err) {
-  console.error('Check failed:', err instanceof Error ? err.message : err);
+  console.error('Check failed:', explain(err, { local }));
   process.exit(1);
 }

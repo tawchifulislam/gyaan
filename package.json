@@ -20,7 +20,11 @@
     "db:migrate": "tsx scripts/db-migrate.ts",
     "db:migrate:local": "tsx scripts/db-migrate.ts --local",
     "db:check": "tsx scripts/db-check.ts",
-    "db:check:local": "tsx scripts/db-check.ts --local"
+    "db:check:local": "tsx scripts/db-check.ts --local",
+    "ingest": "tsx scripts/ingest.ts",
+    "ingest:local": "tsx scripts/ingest.ts --local",
+    "search": "tsx scripts/search.ts",
+    "search:local": "tsx scripts/search.ts --local"
   },
   "dependencies": {
     "cheerio": "^1.2.0",
