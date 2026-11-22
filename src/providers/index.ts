@@ -1,4 +1,6 @@
 import { EmbeddingCache } from './cache.js';
+import { GeminiGenerator } from './generate.js';
+import type { TextGenerator } from './generate.js';
 import { GeminiProvider } from './gemini.js';
 import { RateLimiter } from './rateLimiter.js';
 import type { EmbeddingProvider } from './types.js';
@@ -63,4 +65,30 @@ export const createProvider = (
     });
   }
   throw new Error(`Unknown provider "${provider}" in "${spec}"`);
+};
+
+export const DEFAULT_GENERATOR = 'gemini:gemini-3.1-flash-lite';
+
+/** spec looks like "gemini:gemini-3.1-flash-lite" */
+export const createGenerator = (
+  spec: string,
+  env: Env,
+  log: (message: string) => void = () => undefined,
+): TextGenerator => {
+  const [provider, ...rest] = spec.split(':');
+  const model = rest.join(':');
+  if (provider !== 'gemini' || !model) {
+    throw new Error(`Bad generator spec "${spec}". Use gemini:<model>, e.g. ${DEFAULT_GENERATOR}`);
+  }
+  if (!env.GEMINI_API_KEY) throw new Error('GEMINI_API_KEY is missing');
+  // Free tier of gemini-3.1-flash-lite is 15 requests/min; raise GEMINI_GEN_RPM if your limit is higher.
+  const rpm = Number(env.GEMINI_GEN_RPM ?? 12);
+  return new GeminiGenerator({
+    apiKey: env.GEMINI_API_KEY,
+    model,
+    limiter: new RateLimiter(rpm, 200_000),
+    ...(env.GEMINI_BASE_URL ? { baseUrl: env.GEMINI_BASE_URL } : {}),
+    ...(env.GEMINI_THINKING_LEVEL ? { thinkingLevel: env.GEMINI_THINKING_LEVEL } : {}),
+    log,
+  });
 };

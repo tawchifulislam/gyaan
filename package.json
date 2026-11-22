@@ -24,7 +24,9 @@
     "ingest": "tsx scripts/ingest.ts",
     "ingest:local": "tsx scripts/ingest.ts --local",
     "search": "tsx scripts/search.ts",
-    "search:local": "tsx scripts/search.ts --local"
+    "search:local": "tsx scripts/search.ts --local",
+    "answers": "tsx scripts/answer-eval.ts",
+    "answers:local": "tsx scripts/answer-eval.ts --local"
   },
   "dependencies": {
     "cheerio": "^1.2.0",
