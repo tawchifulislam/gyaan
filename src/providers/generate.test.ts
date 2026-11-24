@@ -116,6 +116,14 @@ describe('GeminiGenerator', () => {
     expect((fetchImpl as unknown as { mock: { calls: unknown[] } }).mock.calls.length).toBe(6);
   });
 
+  it('gives up with a clear message when the model takes too long', async () => {
+    const hang = ((_u: string, init: RequestInit) =>
+      new Promise<Response>((_resolve, reject) => {
+        init.signal?.addEventListener('abort', () => reject(init.signal?.reason));
+      })) as unknown as typeof fetch;
+    await expect(make(hang, { timeoutMs: 30 }).generate({ system: 's', user: 'u' })).rejects.toThrow(/no answer within 0s/);
+  });
+
   it('returns empty text (not a crash) when the model produced nothing', async () => {
     const fetchImpl = (async () => json({ candidates: [{ finishReason: 'MAX_TOKENS' }] })) as unknown as typeof fetch;
     const r = await make(fetchImpl).generate({ system: 's', user: 'u' });

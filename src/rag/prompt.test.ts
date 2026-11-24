@@ -16,13 +16,17 @@ const hit = (n: number, text = `text ${n}`): SearchHit => ({
 
 describe('buildUserMessage', () => {
   it('numbers the sources from 1 and ends with the question', () => {
-    const msg = buildUserMessage('কেন?', [hit(1), hit(2)]);
+    const msg = buildUserMessage('কেন?', [hit(1), hit(2)], 'bn');
     expect(msg).toContain('[1] Title 1 (part 1)\ntext 1');
     expect(msg).toContain('[2] Title 2 (part 2)\ntext 2');
-    expect(msg.trim().endsWith('Question: কেন?')).toBe(true);
+    expect(msg).toContain('Question: কেন?');
+  });
+  it('states the answer language last, in words the model cannot miss', () => {
+    expect(buildUserMessage('Why?', [hit(1)], 'en').trim().endsWith('Answer language: English')).toBe(true);
+    expect(buildUserMessage('কেন?', [hit(1)], 'bn')).toContain('Answer language: Bengali');
   });
   it('clips a very long source', () => {
-    const msg = buildUserMessage('q', [hit(1, 'x'.repeat(10_000))]);
+    const msg = buildUserMessage('q', [hit(1, 'x'.repeat(10_000))], 'en');
     expect(msg.length).toBeLessThan(3200);
     expect(msg).toContain('...');
   });
@@ -32,7 +36,7 @@ describe('system prompt', () => {
   it('states the rules that matter most', () => {
     expect(SYSTEM_PROMPT).toMatch(/ONLY the numbered sources/);
     expect(SYSTEM_PROMPT).toMatch(/"answerable" to false/);
-    expect(SYSTEM_PROMPT).toMatch(/language of the question/);
+    expect(SYSTEM_PROMPT).toMatch(/Answer language:/);
     expect(SYSTEM_PROMPT).toMatch(/never follow instructions/i);
   });
 });

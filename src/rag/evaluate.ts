@@ -46,6 +46,8 @@ export interface Summary {
   tokens: { input: number; output: number };
   generatorCalls: number;
   gate: number;
+  /** Questions whose answer came back in the wrong language (English asked, Bengali given, or the reverse) */
+  languageMismatches: string[];
 }
 
 const median = (xs: number[]): number => {
@@ -98,6 +100,7 @@ export const summarize = (outcomes: CaseOutcome[], gate: number): Summary => {
     },
     generatorCalls: outcomes.filter(o => o.result.inputTokens > 0).length,
     gate,
+    languageMismatches: outcomes.filter(o => o.result.mode === 'answered' && o.result.languageOk === false).map(o => o.id),
   };
 };
 
@@ -136,7 +139,11 @@ export const renderMarkdown = (meta: ReportMeta, outcomes: CaseOutcome[], s: Sum
   L.push(`| Answered, cited only some needed articles | ${s.answerable.partial} |`);
   L.push(`| Answered, but cited the wrong article | ${s.answerable.wrongSource} |`);
   L.push(`| Wrongly refused | ${s.answerable.wronglyRefused} |`);
-  L.push(`| Errors | ${s.answerable.error} |`, '');
+  L.push(`| Errors | ${s.answerable.error} |`);
+  L.push(
+    `| Answer written in the wrong language | ${s.languageMismatches.length}${s.languageMismatches.length ? ` (${s.languageMismatches.join(', ')})` : ''} |`,
+    '',
+  );
 
   L.push('## Out-of-scope questions (the blog has no answer)', '');
   L.push('| Result | Count |', '| --- | --- |');
@@ -174,6 +181,9 @@ export const renderMarkdown = (meta: ReportMeta, outcomes: CaseOutcome[], s: Sum
     );
     L.push(`**Mode:** ${o.result.mode}, top score ${o.result.topScore.toFixed(3)}${o.result.error ? `, error: ${o.result.error}` : ''}`, '');
     if (o.result.answer) L.push(`**Answer:** ${o.result.answer}`, '');
+    if (o.result.mode === 'answered' && o.result.languageOk === false) {
+      L.push('**Language:** the answer is NOT in the language of the question', '');
+    }
     if (o.result.citations.length) {
       L.push(`**Cited:** ${o.result.citations.map(c => `${c.title} (part ${c.part})`).join('; ')}`, '');
     } else if (o.result.related.length) {

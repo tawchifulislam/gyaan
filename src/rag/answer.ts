@@ -7,6 +7,7 @@ import type { Db } from '../db/db.js';
 import type { TextGenerator } from '../providers/generate.js';
 import type { EmbeddingProvider } from '../providers/types.js';
 import { errorMessage } from '../util/errors.js';
+import { answerLanguageOk, detectQuestionLanguage } from './language.js';
 import {
   ANSWER_SCHEMA,
   AnswerParseError,
@@ -61,6 +62,8 @@ export interface AnswerResult {
   topScore: number;
   /** Scores of every retrieved chunk, best first (for tuning the gate) */
   scores: number[];
+  /** Did the answer come back in the language of the question? null when there is no answer. */
+  languageOk: boolean | null;
   inputTokens: number;
   outputTokens: number;
   latencyMs: number;
@@ -116,6 +119,7 @@ export const answerQuestion = async (
     related: [],
     topScore: 0,
     scores: [],
+    languageOk: null,
     inputTokens: 0,
     outputTokens: 0,
     latencyMs: 0,
@@ -146,10 +150,11 @@ export const answerQuestion = async (
   }
 
   const sources = hits.slice(0, options.maxSources ?? 5);
+  const answerLanguage = detectQuestionLanguage(question);
   try {
     const generated = await generator.generate({
       system: SYSTEM_PROMPT,
-      user: buildUserMessage(question, sources),
+      user: buildUserMessage(question, sources, answerLanguage),
       jsonSchema: ANSWER_SCHEMA as unknown as Record<string, unknown>,
     });
     const usage = { inputTokens: generated.inputTokens, outputTokens: generated.outputTokens };
@@ -167,6 +172,7 @@ export const answerQuestion = async (
       mode: 'answered',
       answer: parsed.answer,
       citations: cited.map(toCitation),
+      languageOk: answerLanguageOk(answerLanguage, parsed.answer),
       topScore,
       scores,
       related,

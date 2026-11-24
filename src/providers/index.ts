@@ -89,6 +89,7 @@ export const createGenerator = (
     limiter: new RateLimiter(rpm, 200_000),
     ...(env.GEMINI_BASE_URL ? { baseUrl: env.GEMINI_BASE_URL } : {}),
     ...(env.GEMINI_THINKING_LEVEL ? { thinkingLevel: env.GEMINI_THINKING_LEVEL } : {}),
+    ...(env.GEMINI_GEN_TIMEOUT_MS ? { timeoutMs: Number(env.GEMINI_GEN_TIMEOUT_MS) } : {}),
     log,
   });
 };

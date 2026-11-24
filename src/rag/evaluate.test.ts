@@ -13,6 +13,7 @@ const result = (patch: Partial<AnswerResult>): AnswerResult => ({
   related: [],
   topScore: 0.7,
   scores: [0.7],
+  languageOk: true,
   inputTokens: 100,
   outputTokens: 10,
   latencyMs: 1000,
@@ -90,6 +91,26 @@ describe('summarize', () => {
   });
   it('has no score summary when a side is missing', () => {
     expect(summarize(sample().filter(o => o.answerable), 0.6).scores).toBeNull();
+  });
+});
+
+describe('language check', () => {
+  it('lists answers that came back in the wrong language, and shows them in the report', () => {
+    const o = [
+      outcome('q1', true, result({ citations: [cite('a')] }), 'ok'),
+      outcome('q2', true, result({ citations: [cite('a')], languageOk: false }), 'ok'),
+      outcome('q3', false, result({ mode: 'unrelated', answer: null, languageOk: null }), 'refused-ok'),
+    ];
+    const s = summarize(o, 0.6);
+    expect(s.languageMismatches).toEqual(['q2']);
+    const md = renderMarkdown({ generator: 'g', embedder: 'e', gate: 0.6, date: 'd' }, o, s);
+    expect(md).toContain('Answer written in the wrong language | 1 (q2)');
+    expect(md).toContain('the answer is NOT in the language of the question');
+    expect((md.match(/NOT in the language/g) ?? []).length).toBe(1);
+  });
+  it('reports none when every answer obeyed', () => {
+    const s = summarize(sample(), 0.6);
+    expect(s.languageMismatches).toEqual([]);
   });
 });
 

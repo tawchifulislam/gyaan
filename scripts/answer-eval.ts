@@ -95,6 +95,7 @@ try {
   console.log('\nSummary');
   console.log(`  answerable:   ${a.ok}/${a.n} answered from the right article(s), ${a.partial} partial, ${a.wrongSource} wrong source, ${a.wronglyRefused} wrongly refused, ${a.error} errors`);
   console.log(`  out-of-scope: ${o.refusedByGate + o.refusedByModel}/${o.n} refused (${o.refusedByGate} by the gate, ${o.refusedByModel} by the model), ${o.answered.length} answered anyway${o.answered.length ? ` (${o.answered.join(', ')})` : ''}, ${o.error} errors`);
+  console.log(`  language:     ${summary.languageMismatches.length} answer(s) in the wrong language${summary.languageMismatches.length ? ` (${summary.languageMismatches.join(', ')})` : ''}`);
   console.log(`  ${summary.generatorCalls} generation request(s), ${summary.tokens.input} input / ${summary.tokens.output} output tokens`);
   console.log(`\nWrote eval/answers.md (read and mark it) and ${file}`);
 } catch (err) {

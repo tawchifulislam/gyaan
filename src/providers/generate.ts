@@ -35,6 +35,8 @@ export interface GeminiGeneratorOptions {
   log?: (message: string) => void;
   /** e.g. "minimal" or "low". Left out unless set: not every model accepts it. */
   thinkingLevel?: string;
+  /** Give up on one request after this long. The live site uses a short one and shows the sources instead. */
+  timeoutMs?: number;
 }
 
 interface Part {
@@ -83,15 +85,25 @@ export class GeminiGenerator implements TextGenerator {
       }
       if (useThinking) generationConfig.thinkingConfig = { thinkingLevel: this.o.thinkingLevel };
 
-      const res = await this.fetchImpl(`${this.baseUrl}/models/${this.o.model}:generateContent`, {
-        method: 'POST',
-        headers: { 'x-goog-api-key': this.o.apiKey, 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: req.system }] },
-          contents: [{ role: 'user', parts: [{ text: req.user }] }],
-          generationConfig,
-        }),
-      });
+      const timeoutMs = this.o.timeoutMs ?? 60_000;
+      let res: Response;
+      try {
+        res = await this.fetchImpl(`${this.baseUrl}/models/${this.o.model}:generateContent`, {
+          method: 'POST',
+          headers: { 'x-goog-api-key': this.o.apiKey, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            systemInstruction: { parts: [{ text: req.system }] },
+            contents: [{ role: 'user', parts: [{ text: req.user }] }],
+            generationConfig,
+          }),
+          signal: AbortSignal.timeout(timeoutMs),
+        });
+      } catch (err) {
+        if (err instanceof Error && (err.name === 'TimeoutError' || err.name === 'AbortError')) {
+          throw new Error(`Gemini ${this.o.model}: no answer within ${Math.round(timeoutMs / 1000)}s`);
+        }
+        throw err;
+      }
 
       if (res.ok) return this.read((await res.json()) as GenerateResponse);
 

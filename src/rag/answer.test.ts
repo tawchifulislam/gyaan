@@ -161,6 +161,34 @@ describe('answerQuestion', () => {
   });
 });
 
+describe('answer language', () => {
+  const ENGLISH = 'What do cats eat?';
+  it('tells the model to answer in English for an English question, and checks it did', async () => {
+    const good = generator('{"answerable":true,"answer":"Cats drink milk.","used_sources":[1]}');
+    const r1 = await ask(ENGLISH, good.g, { [ENGLISH]: [1, 0, 0] });
+    expect(good.calls[0]?.user).toContain('Answer language: English');
+    expect(r1.mode).toBe('answered');
+    expect(r1.languageOk).toBe(true);
+
+    const bad = generator('{"answerable":true,"answer":"বিড়াল দুধ খায়।","used_sources":[1]}');
+    const r2 = await ask(ENGLISH, bad.g, { [ENGLISH]: [1, 0, 0] });
+    expect(r2.mode).toBe('answered');
+    expect(r2.languageOk).toBe(false);
+  });
+
+  it('asks for Bengali for a Bengali question, including one with an English word in it', async () => {
+    const g = generator('{"answerable":true,"answer":"দুধ","used_sources":[1]}');
+    const r = await ask('Cat কী খায়?', g.g, { 'Cat কী খায়?': [1, 0, 0] });
+    expect(g.calls[0]?.user).toContain('Answer language: Bengali');
+    expect(r.languageOk).toBe(true);
+  });
+
+  it('has no language verdict when there is no answer', async () => {
+    const r = await ask('বিটকয়েন কী?', generator('{}').g);
+    expect(r.languageOk).toBeNull();
+  });
+});
+
 describe('gateFor', () => {
   it('has a measured gate for gemini-embedding-001 and none for unmeasured models', () => {
     expect(gateFor('gemini:gemini-embedding-001')).toBe(0.6);
